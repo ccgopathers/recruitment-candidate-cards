@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="招新面试候选人姓名目录、个人卡片与策划外联数据统计。">
+  <title>招新心动档案</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="返回顶部">
+      <span class="wordmark__dot" aria-hidden="true"></span>
+      <span>招新心动档案</span>
+    </a>
+    <nav aria-label="页面导航">
+      <a href="#candidates">姓名目录</a>
+      <a href="#insights">数据对照</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="intro section" id="top">
+      <p class="intro__count"><span>20</span> 位候选人</p>
+      <h1>按第一志愿找到名字，点击查看完整卡片。</h1>
+      <p class="intro__note">卡片包含志愿、能力自评、领导经历和三个关键词；候选人明确选择的“最符合自己”关键词会重点标出。</p>
+    </section>
+
+    <section class="controls section" aria-label="搜索候选人">
+      <label class="search-field">
+        <span>搜索姓名、志愿或关键词</span>
+        <input id="search" type="search" autocomplete="off" placeholder="例如：王禹哲、策划、执行力">
+      </label>
+      <p class="result-status" id="result-status" aria-live="polite">显示全部 20 位候选人</p>
+    </section>
+
+    <section class="candidate-section section" id="candidates" aria-labelledby="candidate-heading">
+      <div class="section-head">
+        <div>
+          <h2 id="candidate-heading">姓名目录</h2>
+          <p>按第一志愿分组。选择姓名即可打开个人卡片。</p>
+        </div>
+      </div>
+      <div class="candidate-directory" id="candidate-directory"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <strong>没有匹配结果</strong>
+        <p>换一个姓名、志愿或关键词试试。</p>
+      </div>
+    </section>
+
+    <section class="insights" id="insights" aria-labelledby="insights-heading">
+      <div class="insights__shell">
+        <div class="section-head section-head--stats">
+          <div>
+            <h2 id="insights-heading">策划 × 外联</h2>
+            <p>统计第一志愿明确选择策划或外联的 18 位同学。</p>
+          </div>
+          <p class="method-note">平均分来自能力自评，不代表面试评价。</p>
+        </div>
+        <div class="stat-overview" id="stat-overview"></div>
+        <div class="comparison-grid">
+          <article class="data-panel">
+            <div class="panel-head"><h3>能力画像</h3><span>平均分 / 5</span></div>
+            <div id="skill-comparison" class="skill-comparison"></div>
+          </article>
+          <article class="data-panel">
+            <div class="panel-head"><h3>第二志愿流向</h3><span>人数</span></div>
+            <div id="second-choice" class="choice-flow"></div>
+          </article>
+          <article class="data-panel">
+            <div class="panel-head"><h3>关键词热度</h3><span>同义词已轻量归并</span></div>
+            <div id="keyword-clouds" class="keyword-clouds"></div>
+          </article>
+          <article class="data-panel data-panel--takeaway">
+            <div class="panel-head"><h3>面试提示</h3></div>
+            <div id="takeaways" class="takeaways"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="profile-dialog" id="candidate-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="关闭候选人卡片">关闭</button>
+    <div id="dialog-card"></div>
+  </dialog>
+
+  <footer>
+    <p>用于内部面试准备 · 共 20 位候选人</p>
+    <a href="#top">回到顶部</a>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
