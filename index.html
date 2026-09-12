@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="招新面试候选人姓名目录、个人卡片与策划外联数据统计。">
+  <meta name="description" content="14 位招新面试候选人的面试顺序、个人卡片与岗位能力对比。">
   <title>招新心动档案</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,16 +18,17 @@
       <span>招新心动档案</span>
     </a>
     <nav aria-label="页面导航">
-      <a href="#candidates">姓名目录</a>
-      <a href="#insights">数据对照</a>
+      <a href="#candidates">面试顺序</a>
+      <a href="#insights">能力矩阵</a>
+      <a href="#rankings">岗位排序</a>
     </nav>
   </header>
 
   <main id="main">
     <section class="intro section" id="top">
-      <p class="intro__count"><span>20</span> 位候选人</p>
-      <h1>按第一志愿找到名字，点击查看完整卡片。</h1>
-      <p class="intro__note">卡片包含志愿、能力自评、领导经历和三个关键词；候选人明确选择的“最符合自己”关键词会重点标出。</p>
+      <p class="intro__count"><span>14</span> 位候选人</p>
+      <h1>按到场顺序面试，点击姓名查看完整卡片。</h1>
+      <p class="intro__note">序号即面试顺序。卡片包含志愿、能力自评、领导经历和三个关键词；候选人明确选择的“最符合自己”关键词会重点标出。</p>
     </section>
 
     <section class="controls section" aria-label="搜索候选人">
@@ -35,14 +36,14 @@
         <span>搜索姓名、志愿或关键词</span>
         <input id="search" type="search" autocomplete="off" placeholder="例如：王禹哲、策划、执行力">
       </label>
-      <p class="result-status" id="result-status" aria-live="polite">显示全部 20 位候选人</p>
+      <p class="result-status" id="result-status" aria-live="polite">显示全部 14 位候选人</p>
     </section>
 
     <section class="candidate-section section" id="candidates" aria-labelledby="candidate-heading">
       <div class="section-head">
         <div>
-          <h2 id="candidate-heading">姓名目录</h2>
-          <p>按第一志愿分组。选择姓名即可打开个人卡片。</p>
+          <h2 id="candidate-heading">面试顺序</h2>
+          <p>从上至下依次进行。选择姓名即可打开个人卡片。</p>
         </div>
       </div>
       <div class="candidate-directory" id="candidate-directory"></div>
@@ -56,30 +57,24 @@
       <div class="insights__shell">
         <div class="section-head section-head--stats">
           <div>
-            <h2 id="insights-heading">策划 × 外联</h2>
-            <p>统计第一志愿明确选择策划或外联的 18 位同学。</p>
+            <h2 id="insights-heading">第一志愿能力矩阵</h2>
+            <p>横轴为 7 项能力，纵轴为姓名；策划与外联分别对比。</p>
           </div>
-          <p class="method-note">平均分来自能力自评，不代表面试评价。</p>
+          <p class="method-note">颜色表示分数强弱，单元格保留原始分值。数据均为候选人自评，不代表面试评价。</p>
         </div>
         <div class="stat-overview" id="stat-overview"></div>
-        <div class="comparison-grid">
-          <article class="data-panel">
-            <div class="panel-head"><h3>能力画像</h3><span>平均分 / 5</span></div>
-            <div id="skill-comparison" class="skill-comparison"></div>
-          </article>
-          <article class="data-panel">
-            <div class="panel-head"><h3>第二志愿流向</h3><span>人数</span></div>
-            <div id="second-choice" class="choice-flow"></div>
-          </article>
-          <article class="data-panel">
-            <div class="panel-head"><h3>关键词热度</h3><span>同义词已轻量归并</span></div>
-            <div id="keyword-clouds" class="keyword-clouds"></div>
-          </article>
-          <article class="data-panel data-panel--takeaway">
-            <div class="panel-head"><h3>面试提示</h3></div>
-            <div id="takeaways" class="takeaways"></div>
-          </article>
-        </div>
+        <div class="matrix-stack" id="group-matrices"></div>
+
+        <section class="role-rankings" id="rankings" aria-labelledby="ranking-heading">
+          <div class="section-head section-head--compact">
+            <div>
+              <h2 id="ranking-heading">宣传与行政候选人排序</h2>
+              <p>纳入任一志愿包含该岗位的候选人，并标明志愿顺位。</p>
+            </div>
+            <p class="method-note">宣传匹配分取“海报设计、公众号”平均分；行政按“行政事务”自评分排序。</p>
+          </div>
+          <div class="ranking-grid" id="role-rankings"></div>
+        </section>
       </div>
     </section>
   </main>
@@ -90,7 +85,7 @@
   </dialog>
 
   <footer>
-    <p>用于内部面试准备 · 共 20 位候选人</p>
+    <p>招新面试准备 · 共 14 位候选人</p>
     <a href="#top">回到顶部</a>
   </footer>
 
